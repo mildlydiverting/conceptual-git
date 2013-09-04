@@ -7,7 +7,7 @@ conceptual-git
 
 It's [Understanding Git Conceptually](http://www.sbf5.com/~cduan/technical/git/) converted to a single article and various ebook formats.
 
-Original article is (c) Charles Duen
+Original article is (c) Charles Duan
 
 ## Why?
 
