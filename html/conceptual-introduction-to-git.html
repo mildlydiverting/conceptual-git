@@ -1,0 +1,1016 @@
+<!DOCTYPE html>  
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>conceptual introduction to git</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+/*
+This document has been created with Marked.app <http://markedapp.com>, Copyright 2013 Brett Terpstra
+Content is property of the document author
+Please leave this notice in place, along with any additional credits below.
+---------------------------------------------------------------
+Title: GitHub
+Author: Brett Terpstra
+Description: Github README style. Includes theme for Pygmentized code blocks.
+*/
+html,body{color:black}*:not('#mkdbuttons'){margin:0;padding:0}#wrapper{font:13.34px helvetica,arial,freesans,clean,sans-serif;-webkit-font-smoothing:subpixel-antialiased;line-height:1.4;padding:3px;background:#fff;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px}p{margin:1em 0}a{color:#4183c4;text-decoration:none}#wrapper{background-color:#fff;padding:30px;margin:15px;font-size:14px;line-height:1.6}#wrapper>*:first-child{margin-top:0!important}#wrapper>*:last-child{margin-bottom:0!important}@media screen{#wrapper{box-shadow:0 0 0 1px #cacaca,0 0 0 4px #eee}}h1,h2,h3,h4,h5,h6{margin:20px 0 10px;padding:0;font-weight:bold;-webkit-font-smoothing:subpixel-antialiased;cursor:text}h1{font-size:28px;color:#000}h2{font-size:24px;border-bottom:1px solid #ccc;color:#000}h3{font-size:18px;color:#333}h4{font-size:16px;color:#333}h5{font-size:14px;color:#333}h6{color:#777;font-size:14px}p,blockquote,table,pre{margin:15px 0}ul{padding-left:30px}ol{padding-left:30px}ol li ul:first-of-type{margin-top:0}hr{background:transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;border:0 none;color:#ccc;height:4px;padding:0}#wrapper>h2:first-child{margin-top:0;padding-top:0}#wrapper>h1:first-child{margin-top:0;padding-top:0}#wrapper>h1:first-child+h2{margin-top:0;padding-top:0}#wrapper>h3:first-child,#wrapper>h4:first-child,#wrapper>h5:first-child,#wrapper>h6:first-child{margin-top:0;padding-top:0}a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6{margin-top:0;padding-top:0}h1+p,h2+p,h3+p,h4+p,h5+p,h6+p,ul li>:first-child,ol li>:first-child{margin-top:0}dl{padding:0}dl dt{font-size:14px;font-weight:bold;font-style:italic;padding:0;margin:15px 0 5px}dl dt:first-child{padding:0}dl dt>:first-child{margin-top:0}dl dt>:last-child{margin-bottom:0}dl dd{margin:0 0 15px;padding:0 15px}dl dd>:first-child{margin-top:0}dl dd>:last-child{margin-bottom:0}blockquote{border-left:4px solid #DDD;padding:0 15px;color:#777}blockquote>:first-child{margin-top:0}blockquote>:last-child{margin-bottom:0}table{border-collapse:collapse;border-spacing:0;font-size:100%;font:inherit}table th{font-weight:bold;border:1px solid #ccc;padding:6px 13px}table td{border:1px solid #ccc;padding:6px 13px}table tr{border-top:1px solid #ccc;background-color:#fff}table tr:nth-child(2n){background-color:#f8f8f8}img{max-width:100%}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px;font-family:Consolas,'Liberation Mono',Courier,monospace;font-size:12px;color:#333}pre>code{margin:0;padding:0;white-space:pre;border:0;background:transparent}.highlight pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre code,pre tt{background-color:transparent;border:0}.poetry pre{font-family:Georgia,Garamond,serif!important;font-style:italic;font-size:110%!important;line-height:1.6em;display:block;margin-left:1em}.poetry pre code{font-family:Georgia,Garamond,serif!important;word-break:break-all;word-break:break-word;-webkit-hyphens:auto;-moz-hyphens:auto;hyphens:auto;white-space:pre-wrap}sup,sub,a.footnote{font-size:1.4ex;height:0;line-height:1;vertical-align:super;position:relative}sub{vertical-align:sub;top:-1px}@media print{body{background:#fff}img,pre,blockquote,table,figure{page-break-inside:avoid}#wrapper{background:#fff;border:0}code{background-color:#fff;color:#333!important;padding:0 .2em;border:1px solid #dedede}pre{background:#fff}pre code{background-color:white!important;overflow:visible}}@media screen{body.inverted{color:#eee!important;border-color:#555;box-shadow:none}.inverted #wrapper,.inverted hr .inverted p,.inverted td,.inverted li,.inverted h1,.inverted h2,.inverted h3,.inverted h4,.inverted h5,.inverted h6,.inverted th,.inverted .math,.inverted caption,.inverted dd,.inverted dt,.inverted blockquote{color:#eee!important;border-color:#555;box-shadow:none}.inverted td,.inverted th{background:#333}.inverted h2{border-color:#555}.inverted hr{border-color:#777;border-width:1px!important}::selection{background:rgba(157,193,200,0.5)}h1::selection{background-color:rgba(45,156,208,0.3)}h2::selection{background-color:rgba(90,182,224,0.3)}h3::selection,h4::selection,h5::selection,h6::selection,li::selection,ol::selection{background-color:rgba(133,201,232,0.3)}code::selection{background-color:rgba(0,0,0,0.7);color:#eee}code span::selection{background-color:rgba(0,0,0,0.7)!important;color:#eee!important}a::selection{background-color:rgba(255,230,102,0.2)}.inverted a::selection{background-color:rgba(255,230,102,0.6)}td::selection,th::selection,caption::selection{background-color:rgba(180,237,95,0.5)}.inverted{background:#0b2531;background:#252a2a}.inverted #wrapper{background:#252a2a}.inverted a{color:#acd1d5}}.highlight .c{color:#998;font-style:italic}.highlight .err{color:#a61717;background-color:#e3d2d2}.highlight .k,.highlight .o{font-weight:bold}.highlight .cm{color:#998;font-style:italic}.highlight .cp{color:#999;font-weight:bold}.highlight .c1{color:#998;font-style:italic}.highlight .cs{color:#999;font-weight:bold;font-style:italic}.highlight .gd{color:#000;background-color:#fdd}.highlight .gd .x{color:#000;background-color:#faa}.highlight .ge{font-style:italic}.highlight .gr{color:#a00}.highlight .gh{color:#999}.highlight .gi{color:#000;background-color:#dfd}.highlight .gi .x{color:#000;background-color:#afa}.highlight .go{color:#888}.highlight .gp{color:#555}.highlight .gs{font-weight:bold}.highlight .gu{color:#800080;font-weight:bold}.highlight .gt{color:#a00}.highlight .kc,.highlight .kd,.highlight .kn,.highlight .kp,.highlight .kr{font-weight:bold}.highlight .kt{color:#458;font-weight:bold}.highlight .m{color:#099}.highlight .s{color:#d14}.highlight .na{color:#008080}.highlight .nb{color:#0086b3}.highlight .nc{color:#458;font-weight:bold}.highlight .no{color:#008080}.highlight .ni{color:#800080}.highlight .ne,.highlight .nf{color:#900;font-weight:bold}.highlight .nn{color:#555}.highlight .nt{color:#000080}.highlight .nv{color:#008080}.highlight .ow{font-weight:bold}.highlight .w{color:#bbb}.highlight .mf,.highlight .mh,.highlight .mi,.highlight .mo{color:#099}.highlight .sb,.highlight .sc,.highlight .sd,.highlight .s2,.highlight .se,.highlight .sh,.highlight .si,.highlight .sx{color:#d14}.highlight .sr{color:#009926}.highlight .s1{color:#d14}.highlight .ss{color:#990073}.highlight .bp{color:#999}.highlight .vc,.highlight .vg,.highlight .vi{color:#008080}.highlight .il{color:#099}.highlight .gc{color:#999;background-color:#eaf2f5}.type-csharp .highlight .k,.type-csharp .highlight .kt{color:#00F}.type-csharp .highlight .nf{color:#000;font-weight:normal}.type-csharp .highlight .nc{color:#2b91af}.type-csharp .highlight .nn{color:#000}.type-csharp .highlight .s,.type-csharp .highlight .sc{color:#a31515}/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+pre code {
+  display: block; padding: 0.5em;
+  color: #000;
+  background: #f8f8ff
+}
+
+pre .comment,
+pre .template_comment,
+pre .diff .header,
+pre .javadoc {
+  color: #998;
+  font-style: italic
+}
+
+pre .keyword,
+pre .css .rule .keyword,
+pre .winutils,
+pre .javascript .title,
+pre .lisp .title,
+pre .subst {
+  color: #000;
+  font-weight: bold
+}
+
+pre .ruby .keyword {
+  font-weight: normal
+}
+
+pre .number,
+pre .hexcolor {
+  color: #40a070
+}
+
+pre .string,
+pre .tag .value,
+pre .phpdoc,
+pre .tex .formula {
+  color: #d14
+}
+
+pre .title,
+pre .id {
+  color: #900;
+  font-weight: bold
+}
+
+pre .javascript .title,
+pre .lisp .title,
+pre .subst {
+  font-weight: normal
+}
+
+pre .class .title,
+pre .haskell .label,
+pre .tex .command {
+  color: #458;
+  font-weight: bold
+}
+
+pre .class .params {
+	color: #000;
+}
+
+pre .tag,
+pre .tag .title,
+pre .rules .property,
+pre .django .tag .keyword {
+  color: #000080;
+  font-weight: normal
+}
+
+pre .attribute,
+pre .variable,
+pre .instancevar,
+pre .lisp .body {
+  color: #008080
+}
+
+pre .regexp {
+  color: #009926
+}
+
+pre .class {
+  color: #458;
+  font-weight: bold
+}
+
+pre .symbol,
+pre .ruby .symbol .string,
+pre .ruby .symbol .keyword,
+pre .ruby .symbol .keymethods,
+pre .lisp .keyword,
+pre .tex .special,
+pre .input_number {
+  color: #0086b3
+}
+
+pre .ruby .identifier .keyword,
+pre .ruby .identifier .keymethods {
+  color: #0086b3;
+}
+
+pre .ruby .constant {
+  color: #008080;
+}
+
+pre .builtin,
+pre .built_in,
+pre .lisp .title {
+  color: #0086b3
+}
+
+pre .preprocessor,
+pre .pi,
+pre .doctype,
+pre .shebang,
+pre .cdata {
+  color: #999;
+  font-weight: bold
+}
+
+pre .deletion {
+  background: #fdd
+}
+
+pre .addition {
+  background: #dfd
+}
+
+pre .diff .change {
+  background: #0086b3
+}
+
+pre .chunk {
+  color: #aaa
+}
+
+pre .tex .formula {
+  opacity: 0.5;
+}
+</style>
+
+</head>
+<body class="normal">
+  <div id="wrapper">
+      <h1 id="understandinggitconceptually">Understanding Git Conceptually</h1>
+
+<p>A Tutorial on Git </p>
+
+<p>by Charles Duan </p>
+
+<p>Originally published at <a href="http://www.sbf5.com/~cduan/technical/git/">http://www.sbf5.com/~cduan/technical/git/</a> </p>
+
+<p><a href="#introduction">Introduction</a></p>
+
+<ul>
+<li><a href="#astory">A Story</a></li>
+<li><a href="#understandinggit">Understanding Git</a></li>
+</ul>
+
+<p><a href="#understandinggit:repositories">1: Repositories</a></p>
+
+<ul>
+<li><a href="#repositorycontents">Repository Contents</a></li>
+<li><a href="#commitobjects">Commit Objects</a></li>
+<li><a href="#heads">Heads</a></li>
+<li><a href="#asimplerepository">A Simple Repository</a></li>
+<li><a href="#referringtoacommit">Referring to a Commit</a></li>
+</ul>
+
+<p><a href="#understandinggit:branching">2: Branching</a></p>
+
+<ul>
+<li><a href="#thepurposeofbranching">The Purpose of Branching</a></li>
+<li><a href="#creatingabranch">Creating a Branch</a></li>
+<li><a href="#switchingbetweenbranches">Switching Between Branches</a></li>
+<li><a href="#relatedcommands">Related Commands</a></li>
+<li><a href="#commonbranchingusepatterns">Common Branching Use Patterns</a></li>
+</ul>
+
+<p><a href="#understandinggit:merging">3: Merging</a></p>
+
+<ul>
+<li><a href="#merging">Merging</a></li>
+<li><a href="#resolvingconflicts">Resolving Conflicts</a></li>
+<li><a href="#fastforwardmerges">Fast Forward Merges</a></li>
+<li><a href="#commonmergeusepatterns">Common Merge Use Patterns</a></li>
+<li><a href="#deletingabranch">Deleting a Branch</a></li>
+</ul>
+
+<p><a href="#understandinggit:collaborating">4: Collaborating</a></p>
+
+<ul>
+<li><a href="#workingwithotherrepositories">Working with Other Repositories</a></li>
+<li><a href="#distributedversioncontrol">Distributed Version Control</a></li>
+<li><a href="#copyingtherepository">Copying the Repository</a></li>
+<li><a href="#receivingchangesfromtheremoterepository">Receiving Changes from the Remote Repository</a></li>
+<li><a href="#sendingchangestotheremoterepository">Sending Changes to the Remote Repository</a></li>
+<li><a href="#pushingandfastforwardmerges">Pushing and Fast Forward Merges</a></li>
+<li><a href="#addinganddeletingbranchesremotely">Adding and Deleting Branches Remotely</a></li>
+<li><a href="#gitwithacentralrepository">Git with a Central Repository</a></li>
+</ul>
+
+<p><a href="#understandinggit:rebasing">5: Rebasing</a></p>
+
+<ul>
+<li><a href="#rebasing">Rebasing</a></li>
+<li><a href="#commonrebasingusepractices">Common Rebasing Use Practices</a></li>
+<li><a href="#movingon">Moving On</a></li>
+</ul>
+
+<hr />
+
+<h1 id="introduction">Introduction</h1>
+
+<p>This is a tutorial on the <a href="http://git-scm.com">Git</a> version control system. </p>
+
+<p>Git is quickly becoming one of the most popular version control systems in use. There are plenty of tutorials on Git already. How is this one different? </p>
+
+<h2 id="astory">A Story</h2>
+
+<p>When I first started using Git, I read plenty of tutorials, as well as the user manual. Though I picked up the basic usage patterns and commands, I never felt like I grasped what was going on &#8220;under the hood,&#8221; so to speak. Frequently this resulted in cryptic error messages, caused by my random guessing at the right command to use at a given time. These difficulties worsened as I began to need more advanced (and less well documented) features. </p>
+
+<p>After a few months, I started to understand those under-the-hood concepts. Once I did, suddenly everything made sense. I could understand the manual pages and perform all sorts of source control tasks. Everything that seemed so cryptic and obscure now was perfectly clear. </p>
+
+<h2 id="understandinggit">Understanding Git</h2>
+
+<p>The conclusion I draw from this is that <strong>you can only really use Git if you understand how Git works.</strong> Merely memorizing which commands you should run at what times will work in the short run, but it&#8217;s only a matter of time before you get stuck or, worse, break something. </p>
+
+<p>Half of the existing resources on Git, unfortunately, take just that approach: they walk you through which commands to run when, and expect that you should do fine if you just mimic those commands. The other half does go through all the concepts, but from what I have seen, they explain Git in a manner that assumes you already understand how Git works. </p>
+
+<p>This tutorial, then, will take a <strong>conceptual approach</strong> to Git. My goal will be, first and foremost, to explain the Git universe and its objectives, and secondarily to illustrate how to use Git commands to manipulate that universe.</p>
+
+<ul>
+<li>I will begin by describing the Git data model, the repository.</li>
+<li>From there I will describe the various operations Git provides for manipulating the repository, starting from the simplest (adding data to a repository) and moving through the more complex operations of branching and merging.</li>
+<li>I will then discuss how to use Git in a collaborative setting.</li>
+<li>Finally I will look at the Git rebase function, which provides an alternative to merging, and consider its pros and cons.</li>
+</ul>
+
+<p><a href="#understandinggit:repositories">Go on to the next page: Repositories</a> </p>
+
+<hr />
+
+<h1 id="understandinggit:repositories">Understanding Git: Repositories</h1>
+
+<h2 id="inthissection">In This Section</h2>
+
+<ul>
+<li><a href="#repositorycontents">Repository Contents</a></li>
+<li><a href="#commitobjects">Commit Objects</a></li>
+<li><a href="#heads">Heads</a></li>
+<li><a href="#asimplerepository">A Simple Repository</a></li>
+<li><a href="#referringtoacommit">Referring to a Commit</a></li>
+</ul>
+
+<h2 id="repositorycontents">Repository Contents</h2>
+
+<p>The purpose of Git is to manage a project, or a set of files, as they change over time. Git stores this information in a data structure called a repository.</p>
+
+<p>A git <strong>repository</strong> contains, among other things, the following:</p>
+
+<ul>
+<li>A set of <strong>commit objects</strong>.</li>
+<li>A set of references to commit objects, called <strong>heads</strong>.</li>
+</ul>
+
+<p>The Git repository is stored in the same directory as the project itself, in a subdirectory called <code>.git</code>. Note differences from central-repository systems like CVS or Subversion:</p>
+
+<ul>
+<li>There is only one <code>.git</code> directory, in the root directory of the project.</li>
+<li>The repository is stored in files alongside the project. There is no central server repository.</li>
+</ul>
+
+<h2 id="commitobjects">Commit Objects</h2>
+
+<p>A <strong>commit object</strong> contains three things:</p>
+
+<ul>
+<li>A set of <strong>files</strong>, reflecting the state of a project at a given point in time.</li>
+<li>References to <strong>parent commit objects</strong>.</li>
+<li>An <strong>SHA1 name</strong>, a 40-character string that uniquely identifies the commit object. The name is composed of a hash of relevant aspects of the commit, so identical commits will always have the same name.</li>
+</ul>
+
+<p>The parent commit objects are those commits that were edited to produce the subsequent state of the project. Generally a commit object will have one parent commit, because one generally takes a project in a given state, makes a few changes, and saves the new state of the project. The section below on merges explains how a commit object could have two or more parents.</p>
+
+<p>A project always has one commit object with no parents. This is the first commit made to the project repository. </p>
+
+<p>Based on the above, you can visualize a repository as a directed acyclic graph of commit objects, with pointers to parent commits always pointing backwards in time, ultimately to the first commit. Starting from any commit, you can walk along the tree by parent commits to see the history of changes that led to that commit. </p>
+
+<p>The idea behind Git is that version control is all about manipulating this graph of commits. Whenever you want to perform some operation to query or manipulate the repository, you should be thinking, &#8220;how do I want to query or manipulate the graph of commits?&#8221; </p>
+
+<h2 id="heads">Heads</h2>
+
+<p>A <strong>head</strong> is simply a reference to a commit object. Each head has a name. By default, there is a head in every repository called <em>master</em>. A repository can contain any number of heads. At any given time, one head is selected as the &#8220;current head.&#8221; This head is aliased to <em>HEAD</em>, always in capitals. </p>
+
+<p>Note this difference: a &#8220;head&#8221; (lowercase) refers to any one of the named heads in the repository; &#8220;<em>HEAD</em>&#8221; (uppercase) refers exclusively to the currently active head. This distinction is used frequently in Git documentation. I also use the convention that names of heads, including <em>HEAD</em>, are set in italics. </p>
+
+<h2 id="asimplerepository">A Simple Repository</h2>
+
+<p>To create a repository, create a directory for the project if it doesn&#8217;t exist, enter it, and run the command <code>git init</code>. The directory does not need to be empty. </p>
+
+<pre><code>    mkdir [project]  
+    cd [project]  
+    git init  </code></pre>
+
+<p>This will create a <code>.git</code> directory in the <code>[project]</code> directory. </p>
+
+<p>To create a commit, you need to do two things: </p>
+
+<ol>
+<li>Tell Git which files to include in the commit, with <code>git add</code>. If a file has not changed since the previous commit (the &#8220;parent&#8221; commit), Git will automatically include it in the commit you are about to perform. Thus, you only need to add files that you have added or modified. Note that it adds directories recursively, so <code>git add .</code> will add everything that has changed.</li>
+<li>Call <code>git commit</code> to create the commit object. The new commit object will have the current <em>HEAD</em> as its parent (and then, after the commit is complete, <em>HEAD</em> will point to the new commit object).</li>
+</ol>
+
+<p>As a shortcut, <code>git commit -a</code> will automatically add all modified files (but not new ones). </p>
+
+<p>Note that if you modify a file but do not add it, then Git will include the previous version (before modifications) to the commit. The modified file will remain in place. </p>
+
+<p>Say you create three commits this way. Your repository will look like this: </p>
+
+<pre><code>    ----&gt;  time  -----&gt;  
+  
+    (A) &lt;-- (B) &lt;-- (C)  
+                     ^  
+                     |  
+                   master  
+                     ^  
+                     |  
+                    HEAD  </code></pre>
+
+<p>where (A), (B), and (C) are the first, second, and third commits, respectively. </p>
+
+<p>Other commands that are useful at this point:</p>
+
+<ul>
+<li><code>git log</code> shows a log of all commits starting from <em>HEAD</em> back to the initial commit. (It can do more than that, of course.)</li>
+<li><code>git status</code> shows which files have changed between the current project state and <em>HEAD</em>. Files are put in one of three categories: new files that haven&#8217;t been added (with <code>git add</code>), modified files that haven&#8217;t been added, and files that have been added.</li>
+<li><code>git diff</code> shows the diff between <em>HEAD</em> and the current project state. With the <code>--cached</code> option it compares added files against <em>HEAD</em>; otherwise it compares files not yet added.</li>
+<li><code>git mv</code> and <code>git rm</code> mark files to be moved (rename) and removed, respectively, much like <code>git add</code>.</li>
+</ul>
+
+<p>My personal workflow usually looks like: </p>
+
+<ol>
+<li>Do some programming.</li>
+<li><code>git status</code> to see what files I changed.</li>
+<li><code>git diff [file]</code> to see exactly what I modified.`</li>
+<li><code>git commit -a -m [message]</code> to commit.`</li>
+</ol>
+
+<h2 id="referringtoacommit">Referring to a Commit</h2>
+
+<p>Now that you&#8217;ve created commits, how do you refer to a specific commit? Git provides many ways to do so. Here are a few:</p>
+
+<ul>
+<li>By its SHA1 name, which you can get from <code>git log</code>.</li>
+<li>By the first few characters of its SHA1 name.</li>
+<li>By a head. For example, <code>HEAD</code> refers to the commit object referenced by <em>HEAD</em>. You can also use the name, such as <code>master</code>.</li>
+<li>Relative to a commit. Putting a caret (^) after a commit name retrieves the parent of that commit. For example, <em>HEAD^</em> is the parent of the current head commit.</li>
+</ul>
+
+<p><a href="#understandinggit:branching">Go on to the next page: Branching</a> </p>
+
+<hr />
+
+<h1 id="understandinggit:branching">Understanding Git: Branching</h1>
+
+<h2 id="inthissection">In This Section</h2>
+
+<ul>
+<li><a href="#thepurposeofbranching">The Purpose of Branching</a></li>
+<li><a href="#creatingabranch">Creating a Branch</a></li>
+<li><a href="#switchingbetweenbranches">Switching Between Branches</a></li>
+<li><a href="#relatedcommands">Related Commands</a></li>
+<li><a href="#commonbranchingusepatterns">Common Branching Use Patterns</a></li>
+</ul>
+
+<h2 id="thepurposeofbranching">The Purpose of Branching</h2>
+
+<p>Say you are working on a paper. You&#8217;ve gotten a first draft out, submitted for review. You then get a new batch of data, and you&#8217;re in the process of integrating it into the paper. Halfway in, however, the review committee calls you up and tells you that you need to change some of your section headings to conform to format specifications. What do you do? </p>
+
+<p>Obviously you don&#8217;t want to send them your half-baked revisions with corrected headings. What you want to do is jump back to the version you sent out, change the headings on that version, and send off that copy, all the while keeping your recent work safely stored somewhere else. </p>
+
+<p>This is the idea behind <strong>branching,</strong> and Git makes it easy to do. </p>
+
+<p><strong>Note on terminology</strong>: The terms &#8220;branch&#8221; and &#8220;head&#8221; are nearly synonymous in Git. Every branch is represented by one head, and every head represents one branch. Sometimes, &#8220;branch&#8221; will be used to refer to a head and the entire history of ancestor commits preceding that head, whereas &#8220;head&#8221; will be used to refer exclusively to a single commit object, the most recent commit in the branch. </p>
+
+<h2 id="creatingabranch">Creating a Branch</h2>
+
+<p>To create a branch, say your repository looks like this: </p>
+
+<pre><code>    (A) -- (B) -- (C)  
+                   |  
+                 master  
+                   |  
+                  HEAD  </code></pre>
+
+<p>where (B) was the version you sent to the conference and (C) is your new revision state. (I&#8217;m dropping the arrowheads because they always point to the left.) </p>
+
+<p>To jump back to commit (B) and start new work from there, you first need to know how to reference the commit. You could either use <code>git log</code> to get the SHA1 name of (B), or you could use <em>HEAD^</em> to retrieve it (as you will remember from the previous page, <em>HEAD^</em> means the parent of the <em>HEAD</em> commit). </p>
+
+<p>Now, we use the <code>git branch</code> command: </p>
+
+<pre><code>    git branch [new-head-name] [reference-to-(B)]  </code></pre>
+
+<p>or, for example: </p>
+
+<pre><code>    git branch fix-headers HEAD^  </code></pre>
+
+<p>This command will create a new head with the given name, and point that head at the requested commit object. If the commit object is left out, it will point to <em>HEAD</em>. </p>
+
+<p>Now our commit tree looks like this: </p>
+
+<pre><code>    (A) -- (B) ------- (C)  
+            |           |  
+       fix-headers    master  
+                        |  
+                       HEAD  </code></pre>
+
+<h2 id="switchingbetweenbranches">Switching Between Branches</h2>
+
+<p>In order to start working on the headers, you need to set the fix-headers head to be the current head. This is done with <code>git checkout</code>: </p>
+
+<pre><code>    git checkout [head-name]  </code></pre>
+
+<p>This command does the following:</p>
+
+<ul>
+<li>Points <em>HEAD</em> to the commit object specified by <em>[head-name]</em></li>
+<li>Rewrites all the files in the directory to match the files stored in the new <em>HEAD</em> commit.</li>
+</ul>
+
+<p><strong>Important note</strong>: if there are any uncommitted changes when you run <code>git checkout</code>, Git will behave very strangely. The strangeness is predictable and sometimes useful, but it is best to avoid it. All you need to do, of course, is commit all the new changes before checking out the new head. </p>
+
+<p>After checking out the <em>fix-headers</em> head, you fix the headers. Now you add and commit the changes as above. The resulting repository looks like this: </p>
+
+<pre><code>             +-------------- (D)  
+            /                 |  
+    (A) -- (B) -- (C)         |  
+                   |          |  
+                 master  fix-headers  
+                              |  
+                             HEAD  </code></pre>
+
+<p>(You can see now why it&#8217;s called &#8220;branching&#8221;: the commit tree has grown a new branch. Note that the angle of the line connecting (B) and (D) is irrelevant; pointers do not store whether they are horizontal or slanted.) </p>
+
+<p>The ancestry of <em>master</em> is (C), (B), (A). The ancestry of <em>fix-headers</em> is (D), (B), (A). You can see this with <code>git log</code>. </p>
+
+<h2 id="relatedcommands">Related Commands</h2>
+
+<p>Other useful commands at this point:</p>
+
+<ul>
+<li><code>git branch</code> with no arguments lists the existing heads, with a star next to the current head.</li>
+<li><code>git diff [head1]..[head2]</code> shows the diff between the commits referenced by <em>head2</em> and <em>head1</em>.</li>
+<li><code>git diff [head1]...[head2]</code> (three dots) shows the diff between <em>head2</em> and the common ancestor of <em>head1</em> and <em>head2</em>. For example, <code>diff master...fix-headers</code> above would show the diff between (D) and (B).</li>
+<li><code>git log [head1]..[head2]</code> shows the change log between <em>head2</em> and the common ancestor of <em>head1</em> and <em>head2</em>. With three dots, it also shows the changes between <em>head1</em> and the common ancestor; this is not so useful. (Switching <em>head1</em> and <em>head2</em>, on the other hand, is very useful.)</li>
+</ul>
+
+<h2 id="commonbranchingusepatterns">Common Branching Use Patterns</h2>
+
+<p>A common way to use Git branching is to maintain one &#8220;main&#8221; or &#8220;trunk&#8221; branch and create new branches to implement new features. Often the default Git branch, <em>master</em>, is used as the main branch. </p>
+
+<p>So, in the example above, it may have been better to leave <em>master</em> at (B), where the paper was submitted to the reviewers. You could then start a new branch to store changes regarding new data. </p>
+
+<p>Ideally, in this pattern, <strong>the <em>master</em> branch is always in a releaseable state.</strong> Other branches will contain half-finished work, new features, and so on. </p>
+
+<p>This pattern is particularly important when there are multiple developers working on a single project. If all developers are adding commits in sequence to a single branch, then new features need to be added in a single commit, in order not to cause the branch to become unusable. However, if each developer creates a new branch to make a new feature, then commits can be made at any time, whether or not they are unfinished. </p>
+
+<p>This is what Git users mean when they say that <strong>commits are cheap.</strong> If you are working on your own branch, there is no reason you need to be particularly careful about what you commit to the repository. It won&#8217;t affect anything else. </p>
+
+<p><a href="#understandinggit:merging">Go on to the next section: Merging</a> </p>
+
+<hr />
+
+<h1 id="understandinggit:merging">Understanding Git: Merging</h1>
+
+<h2 id="inthissection">In This Section</h2>
+
+<ul>
+<li><a href="#merging">Merging</a></li>
+<li><a href="#resolvingconflicts">Resolving Conflicts</a></li>
+<li><a href="#fastforwardmerges">Fast Forward Merges</a></li>
+<li><a href="#commonmergeusepatterns">Common Merge Use Patterns</a></li>
+<li><a href="#deletingabranch">Deleting a Branch</a></li>
+</ul>
+
+<h2 id="merging">Merging</h2>
+
+<p>After you have finished implementing a new feature on a branch, you want to bring that new feature into the main branch, so that everyone can use it. You can do so with the <code>git merge</code> or <code>git pull</code> command. </p>
+
+<p>The syntax for the commands is as follows: </p>
+
+<pre><code>    git merge [head]  
+    git pull . [head]  </code></pre>
+
+<p>They are identical in result. (Though the <code>merge</code> form seems simpler for now, the reason for the <code>pull</code> form will become apparent when discussing multiple developers.) </p>
+
+<p>These commands perform the following operations. Let the current head be called <em>current</em>, and the head to be merged called <em>merge</em>. </p>
+
+<ol>
+<li>Identify the common ancestor of <em>current</em> and <em>merge</em>. Call it <em>ancestor-commit</em>.</li>
+<li>Deal with the easy cases. If the <em>ancestor-commit</em> equals <em>merge</em>, then do nothing. If <em>ancestor-commit</em> equals <em>current</em>, then do a <strong>fast forward merge</strong>.</li>
+<li>Otherwise, determine the changes between the <em>ancestor-commit</em> and <em>merge</em>.</li>
+<li>Attempt to merge those changes into the files in <em>current</em>.</li>
+<li>If there were no conflicts, create a new commit, with two parents, <em>current</em> and <em>merge</em>. Set <em>current</em> (and <em>HEAD</em>) to point to this new commit, and update the working files for the project accordingly.</li>
+<li>If there was a conflict, insert appropriate conflict markers and inform the user. No commit is created.</li>
+</ol>
+
+<p><strong>Important note</strong>: Git can get very confused if there are uncommitted changes in the files when you ask it to perform a merge. So make sure to commit whatever changes you have made so far before you merge. </p>
+
+<p>So, to complete the above example, say you check out the <em>master</em> head again and finish writing up the new data for your paper. Now you want to bring in those changes you made to the headers. </p>
+
+<p>The repository looks like this: </p>
+
+<pre><code>             +---------- (D)  
+            /             |  
+    (A) -- (B) -- (C) -------------- (E)  
+                          |           |  
+                     fix-headers    master  
+                                      |  
+                                     HEAD  </code></pre>
+
+<p>where (E) is the commit reflecting the completed version with the new data. </p>
+
+<p>You would run: </p>
+
+<pre><code>    git merge fix-headers  </code></pre>
+
+<p>If there are no conflicts, the resulting respository looks like this: </p>
+
+<pre><code>             +---------- (D) ---------------+  
+            /             |                  \  
+    (A) -- (B) -- (C) -------------- (E) -- (F)  
+                          |                  |  
+                     fix-headers           master  
+                                             |  
+                                            HEAD  </code></pre>
+
+<p>The merge commit is (F), having parents (D) and (E). Because (B) is the common ancestor between (D) and (E), the files in (F) should contain the changes between (B) and (D), namely the heading fixes, incorporated into the files from (E). </p>
+
+<p><strong>Note on terminology</strong>: When I say &#8220;merge head A <em>into</em> head B,&#8221; I mean that head B is the current head, and you are drawing changes from head A into it. Head B gets updated; nothing is done to head A. (If you replace the word &#8220;merge&#8221; with the word &#8220;pull,&#8221; it may make more sense.) </p>
+
+<h2 id="resolvingconflicts">Resolving Conflicts</h2>
+
+<p>A conflict arises if the commit to be merged in has a change in one place, and the current commit has a change in the same place. Git has no way of telling which change should take precedence. </p>
+
+<p>To resolve the commit, edit the files to fix the conflicting changes. Then run <code>git add</code> to add the resolved files, and run <code>git commit</code> to commit the repaired merge. Git remembers that you were in the middle of a merge, so it sets the parents of the commit correctly. </p>
+
+<h2 id="fastforwardmerges">Fast Forward Merges</h2>
+
+<p>A fast forward merge is a simple optimization for merging. Say your repository looks like this: </p>
+
+<pre><code>                    +-- (D) -- (E)  
+                   /            |  
+    (A) -- (B) -- (C)           |  
+                   |            |  
+                current     to-merge  
+                   |  
+                  HEAD  </code></pre>
+
+<p>and you run <code>git merge to-merge</code>. In this case, all Git needs to do is set <em>current</em> to point to (E). Since (C) is the common ancestor, there are no changes to actually &#8220;merge.&#8221; </p>
+
+<p>Hence, the resulting merged repository looks like: </p>
+
+<pre><code>                    +-- (D) -- (E)  
+                   /            |  
+    (A) -- (B) -- (C)           |  
+                                |  
+                        to-merge, current  
+                                     |  
+                                    HEAD  </code></pre>
+
+<p>That is, <em>to-merge</em> and <em>current</em> both point to commit (E), and <em>HEAD</em> still points to <em>current</em>. </p>
+
+<p>Note an important difference: no new commit object is created for the merge. Git only shifts the head pointers around. </p>
+
+<h2 id="commonmergeusepatterns">Common Merge Use Patterns</h2>
+
+<p>There are two common reasons to merge two branches. The first, as explained above, is to draw the changes from a new feature branch into the main branch. </p>
+
+<p>The second use pattern is to draw the main branch into a feature branch you are developing. This keeps the feature branch up to date with the latest bug fixes and new features added to the main branch. Doing this regularly reduces the risk of creating a conflict when you merge your feature into the main branch. </p>
+
+<p>One disadvantage of doing the above is that your feature branch will end up with a lot of merge commits. An alternative that solves this problem is <a href="git-5.shtml">rebasing</a>, although that comes with problems of its own. </p>
+
+<h2 id="deletingabranch">Deleting a Branch</h2>
+
+<p>After you have merged a development branch into the main branch, you probably don&#8217;t need the development branch anymore. Hence, you may want to delete it so it doesn&#8217;t clutter your <code>git branch</code> listing. </p>
+
+<p>To delete a branch, use <code>git branch -d [head]</code>. This simply removes the specified head from the repository&#8217;s list of heads. </p>
+
+<p>For example, in this repository from above: </p>
+
+<pre><code>             +---------- (D) ---------------+  
+            /             |                  \  
+    (A) -- (B) -- (C) -------------- (E) -- (F)  
+                          |                  |  
+                     fix-headers           master  
+                                             |  
+                                            HEAD  </code></pre>
+
+<p>we probably don&#8217;t need the <em>fix-headers</em> head any more. So we can use: </p>
+
+<pre><code>    git branch -d fix-headers  </code></pre>
+
+<p>and the resulting repository looks like: </p>
+
+<pre><code>             +---------- (D) ---------------+  
+            /                                \  
+    (A) -- (B) -- (C) -------------- (E) -- (F)  
+                                             |  
+                                           master  
+                                             |  
+                                            HEAD  </code></pre>
+
+<p><strong>Important note</strong>: <code>git branch -d</code> will cause an error if the branch to be deleted is not reachable from another head. Why? Consider the following repository: </p>
+
+<pre><code>             +----------- (E)  
+            /              |  
+    (A) -- (B) -- (C)      |  
+                   |       |  
+                 head1   head2  </code></pre>
+
+<p>Say you delete <em>head2</em>. Now how can you use commit (E)? You can&#8217;t check it out, because it isn&#8217;t a head. And it doesn&#8217;t appear in any logs or anywhere else, because it isn&#8217;t an ancestor of <em>head1</em>. So commit (E) is practically useless. In Git terminology, it is a &#8220;dangling commit,&#8221; and its information is lost. </p>
+
+<p>Git does allow you to use the <code>-D</code> option to force deletion of a branch that would create a dangling commit. However, it should be a rare situation that you want to do that. <strong>Think very carefully before using <code>git branch -D</code>.</strong> </p>
+
+<p><a href="#understandinggit:collaborating">Go on to the next page: Collaborating</a> </p>
+
+<hr />
+
+<h1 id="understandinggit:collaborating">Understanding Git: Collaborating</h1>
+
+<h2 id="inthissection">In This Section</h2>
+
+<ul>
+<li><a href="#workingwithotherrepositories">Working with Other Repositories</a></li>
+<li><a href="#distributedversioncontrol">Distributed Version Control</a></li>
+<li><a href="#copyingtherepository">Copying the Repository</a></li>
+<li><a href="#receivingchangesfromtheremoterepository">Receiving Changes from the Remote Repository</a></li>
+<li><a href="#sendingchangestotheremoterepository">Sending Changes to the Remote Repository</a></li>
+<li><a href="#pushingandfastforwardmerges">Pushing and Fast Forward Merges</a></li>
+<li><a href="#addinganddeletingbranchesremotely">Adding and Deleting Branches Remotely</a></li>
+<li><a href="#gitwithacentralrepository">Git with a Central Repository</a></li>
+</ul>
+
+<h2 id="workingwithotherrepositories">Working with Other Repositories</h2>
+
+<p>A key feature of Git is that the repository is stored alongside the working copies of the files themselves. This has the advantage that the repository stores the entire history of the project, and Git can function without needing to connect to an external server. </p>
+
+<p>However, this means that, in order to manipulate the repository, you need to also have access to the working files. This means that two Git developers cannot, by default, share a repository. </p>
+
+<p>To share work among developers, Git uses a <strong>distributed model</strong> of version control. It assumes no central repository. It is possible, of course, to use one repository as the &#8220;central&#8221; one, but it is important to understand the distributed model first. </p>
+
+<h2 id="distributedversioncontrol">Distributed Version Control</h2>
+
+<p>Say you and your friend want to work on the same paper. Your friend already has done some work on it. There are three tasks you need to figure out to do so: </p>
+
+<ol>
+<li>How to get from your friend a copy of the work to date.</li>
+<li>How to get the changes your friend makes into your own repository.</li>
+<li>How to let your friend know about changes you make.</li>
+</ol>
+
+<p>Git provides a number of transport protocols for sharing repository information, such as SSH and HTTP. The easiest (which you can use for testing) is simply accessing both repositories on the same filesystem. </p>
+
+<p>Each protocol is identified by a &#8220;remote-specification.&#8221; For repositories on the same filesystem, the remote-specification is simply the path to the other repository. </p>
+
+<h2 id="copyingtherepository">Copying the Repository</h2>
+
+<p>To make a copy of your friend&#8217;s repository for your own use, run <code>git clone [remote-specification]</code>. </p>
+
+<p>The <em>[remote-specification]</em> identifies the location of your friend&#8217;s repository, and it can be as simple as another folder on the filesystem. Where your friend&#8217;s repository is accessible by a network protocol such as ssh, Git refers to the repository by a URL-like name, such as <code>ssh://server/repository</code>. </p>
+
+<p>For example, if your friend&#8217;s repository is located in <code>~/jdoe/project</code>, you would run: </p>
+
+<pre><code>    git clone ~/jdoe/project  </code></pre>
+
+<p>This would do the following:</p>
+
+<ul>
+<li>Create a directory <em>project</em> and initialize a repository in it.</li>
+<li>Copy all the commit objects and head references from the project into the new repository.</li>
+<li>Add a <strong>remote repository reference</strong> named <em>origin</em> to the new repository, and associate <em>origin</em> with <code>~/jdoe/project</code> as described below. (Like <em>master</em>, <em>origin</em> is a default name used by Git.)</li>
+<li>Add <strong>remote heads</strong> named <em>origin/[head-name]</em> that correspond to the heads in the remote repository.</li>
+<li>Set up one head in the repository to <strong>track</strong> the corresponding <em>origin/[current-head-name]</em> head, namely the one that was currently active in the repository being cloned.</li>
+</ul>
+
+<p>A <strong>remote repository reference</strong> is a name Git uses to refer to the remote repository. Generally it will be <em>origin</em>. Among other things, Git internally associates the <em>remote-specification</em> with the remote repository reference, so you never need to refer to the original repository again.</p>
+
+<p>A branch that <strong>tracks</strong> a remote branch retains an internal reference to the remote branch. This is a convenience that allows you to avoid typing the name of the remote branch in many situations, as will be described below. </p>
+
+<p>The important thing to note is that you now have a complete copy of your friend&#8217;s entire repository. When you branch, commit, merge, or otherwise operate on the repository, you operate only on your own repository. Git only interacts with your friend&#8217;s repository when you specifically ask it to do so. </p>
+
+<p>Say your friend&#8217;s repository looked like this: </p>
+
+<pre><code>                    +---------------(E)  
+                   /                 |  
+    (A) -- (B) -- (C) -- (D)         |  
+                          |          |  
+                        master    feature  
+                          |  
+                         HEAD  </code></pre>
+
+<p>After cloning, your repository would look like: </p>
+
+<pre><code>                    +-------------- (E)  
+                   /                 |  
+    (A) -- (B) -- (C) -- (D)         |  
+                          |          |  
+         origin/master, master    origin/feature  
+                          |  
+                         HEAD  </code></pre>
+
+<p>If you would like to work with the <em>origin/feature</em> remote branch locally, you should manually set up a tracking branch. This is done with the following command: </p>
+
+<pre><code>    git branch --track [new-local-branch] [remote-branch]  </code></pre>
+
+<p>In our example, that command would be <code>git branch --track feature origin/feature</code>. Note that the <code>--track</code> option is on by default and thus redundant (but I like to keep it in anyway, for clarity). </p>
+
+<h2 id="receivingchangesfromtheremoterepository">Receiving Changes from the Remote Repository</h2>
+
+<p>After you have cloned the repository, your friend adds new commits to his repository. How do you get copies of those changes? </p>
+
+<p>The command <code>git fetch [remote-repository-reference]</code> retrieves the new commit objects in your friend&#8217;s repository and creates and/or updates the remote heads accordingly. By default, <em>[remote-repository-reference]</em> is <em>origin</em>. </p>
+
+<p>Say your friend&#8217;s repository now looks like this: </p>
+
+<pre><code>                    +-------- (E) -- (F) -- (G)  
+                   /                         |  
+    (A) -- (B) -- (C) -- (D) -- (H)          |  
+                                 |           |  
+                               master     feature  
+                                 |  
+                                HEAD  </code></pre>
+
+<p>After a <code>git fetch</code>, your repository would look like this: </p>
+
+<pre><code>                    +------------ (E) ------------ (F) ---- (G)  
+                   /               |                         |  
+    (A) -- (B) -- (C) -- (D) --------------- (H)             |  
+                          |        |          |              |  
+                        master  feature origin/master  origin/feature  
+                          |  
+                         HEAD  </code></pre>
+
+<p>Note that your own heads are unaffected. The only difference is that the remote heads, those starting with &#8220;origin/&#8221;, are updated, and the new commit objects have been added to the repository. </p>
+
+<p>Now, you want to update your <em>master</em> and <em>feature</em> heads to reflect your friend&#8217;s changes. This is done with a merge, usually done with <code>git pull</code>. The general syntax is: </p>
+
+<pre><code>    git pull [remote-repository-reference] [remote-head-name]  </code></pre>
+
+<p>This will merge the head named <em>[remote-repository-reference]/[remote-head- name]</em> into <em>HEAD</em>. </p>
+
+<p>Git provides two features to make this simpler. First, if a head is set up with tracking, a simple <code>git pull</code> with no arguments will merge the correct remote head. Second, <code>git pull</code> will perform a <code>fetch</code> automatically, so you rarely need to call <code>git fetch</code> yourself. </p>
+
+<p>Thus, in the above example, if you called <code>git pull</code> on your repository, your <em>master</em> head would be moved forward to commit (H): </p>
+
+<pre><code>                    +-------- (E) ------------- (F) ----- (G)  
+                   /           |                           |  
+    (A) -- (B) -- (C) -- (D) ------------ (H)              |  
+                               |           |               |  
+                            feature  origin/master,  origin/feature  
+                                   master  
+                                           |  
+                                          HEAD  </code></pre>
+
+<h2 id="sendingchangestotheremoterepository">Sending Changes to the Remote Repository</h2>
+
+<p>Now, say that you make changes to your own repository. You want to send these changes to your friend&#8217;s repository. </p>
+
+<p>The command <code>git push</code>, logically doing the opposite of <code>pull</code>, sends data to the remote server. Its full syntax is: </p>
+
+<pre><code>    git push [remote-repository-reference] [remote-head-name]  </code></pre>
+
+<p>When this command is called, Git directs the remote repository to do the following:</p>
+
+<ul>
+<li>Add new commit objects sent by the pushing repository.</li>
+<li>Set <em>[remote-head-name]</em> to point to the same commit that it points to on the pushing repository.</li>
+</ul>
+
+<p>On the sending repository, Git also updates the corresponding remote head reference. </p>
+
+<p>If no arguments are given to <code>git push</code>, it will push all the branches in the repository that are set up for tracking. </p>
+
+<h2 id="pushingandfastforwardmerges">Pushing and Fast Forward Merges</h2>
+
+<p>Git requires that <strong>the push result in a fast-forward merge on the remote repository</strong>. That means that, before the merge, the remote head points to an ancestor of the commit that it will point to after the merge. If this is not the case, Git will complain, and this complaint should be taken seriously. </p>
+
+<p>The reason for this is as follows. Each branch should contain an incrementally improving version of the project. A fast forward merge always indicates simple improvement on a branch, as the head is only pushed forward and not shifted to a different place on the tree. If the head moves to a different place on the tree, then information on how the branch arrived at its most recent state is lost. </p>
+
+<p>For example, imagine that the remote repository looks like this: </p>
+
+<pre><code>    (A) -- (B) -- (C)  
+                   |  
+                  master  </code></pre>
+
+<p>And your cloned repository is changed to look like this: </p>
+
+<pre><code>             +------------- (D)  
+            /                |  
+    (A) -- (B) -- (C)        |  
+                   |         |  
+                 other     master  </code></pre>
+
+<p>Now, if you push <em>master</em> to the remote repository, it will look like this: </p>
+
+<pre><code>             +------------- (D)  
+            /                |  
+    (A) -- (B) -- (C)        |  
+                             |  
+                           master  </code></pre>
+
+<p>Now (C) is a dangling commit. Moreover, the <em>master</em> branch has lost all record that it used to point to (C). Thus, (C) is no longer part of the history of <em>master</em>. </p>
+
+<p>Relatedly, what happens when you attempt to <code>pull</code> changes from the remote repository, which do not result in a fast forward merge? This can happen, for example, when you make changes on a branch in your local repository and branch changes on the remote repository as well. Consider this situation: </p>
+
+<pre><code>                                         +-- (D)  
+                                        /     |  
+    (A) -- (B) -- (C)           (A) -- (B)    |  
+                   |                          |  
+                 master                     master  
+  
+    Your repository             Remote repository  </code></pre>
+
+<p>This may arise if, say, you last pulled from the repository when <code>master</code> was at commit (B), you did work and advanced <code>master</code> to commit (C), and another developer, working on the remote repository, did different work to advance <code>master</code> to (D). </p>
+
+<p>Now, you pull <code>master</code> from the remote repository. What should happen? It was once the case that Git would produce an error, but now it does something smart: it merges the two changes into a new commit, and moves <code>master</code> to that new merge commit. </p>
+
+<pre><code>             +--- (D) ---+  
+            /             \  
+    (A) -- (B) -- (C) -- (E)  
+                          |  
+                        master  </code></pre>
+
+<p>Alternately, you can use <code>rebasing</code>, explained on the next page, to rewrite your commit (C). However, the best approach is to avoid this problem by placing all of your own work on separate branches until you are ready to incorporate them, and then do the incorporation quickly before anyone else has a chance to update the remote repository. </p>
+
+<h2 id="addinganddeletingbranchesremotely">Adding and Deleting Branches Remotely</h2>
+
+<p>To create a new branch on the remote repository, use the following commands, while the new branch is your current head. Let the remote repository reference be <em>origin</em>, and the current branch name be <em>new-branch</em>. </p>
+
+<pre><code>    git push origin new-branch  
+    git checkout [some-other-branch]  
+    git branch -f new-branch origin/new-branch  
+    git checkout new-branch  </code></pre>
+
+<p>The first command will first create the appropriate head in the remote repository and push the new branch commits out. The remaining three are used to recreate the new branch to track the remote branch. </p>
+
+<p>As of Git 1.7, you can perform the above procedure using an option to <code>git push</code>: </p>
+
+<pre><code>    git push --set-upstream origin new-branch  </code></pre>
+
+<p>There are also options <code>--track</code> and <code>--set-upstream</code> for <code>git branch</code> to achieve similar effects. </p>
+
+<p>To delete a branch on the remote repository, use the following command: </p>
+
+<pre><code>    git push [remote-repository-reference] :[head-name]  </code></pre>
+
+<p>That is, put a colon before the head name, which means to push &#8220;no data&#8221; into that head on the remote repository. </p>
+
+<p>To list the available remote branches, use <code>git branch -r</code>. </p>
+
+<h2 id="gitwithacentralrepository">Git with a Central Repository</h2>
+
+<p>If you understand how Git transmits information between repositories using <code>push</code> and <code>pull</code>, then setting up a central repository for a project is simple. Developers simply do their own work and push and pull to the central repository. </p>
+
+<p>When creating the central repository, you can use a &#8220;bare&#8221; repository. This is a repository that has no working files, only repository information. This is useful because a central repository shouldn&#8217;t have anyone editing on it; it should only receive pushes and pulls. </p>
+
+<p>Setting up a Git central repository that is accessible by remote protocol is tricky. The easiest way to do it is to use an existing system such as <a href="http://scie.nti.st/2007/11/14/hosting-git-repositories-the-easy-and-secure-way">Gitosis</a> or <a href="http://github.com">GitHub</a>. </p>
+
+<p><a href="#understandinggit:rebasing">Go on to the next page: Rebasing</a> </p>
+
+<hr />
+
+<h1 id="understandinggit:rebasing">Understanding Git: Rebasing</h1>
+
+<h2 id="inthissection">In This Section</h2>
+
+<ul>
+<li><a href="#rebasing">Rebasing</a></li>
+<li><a href="#commonrebasingusepractices">Common Rebasing Use Practices</a></li>
+<li><a href="#movingon">Moving On</a></li>
+</ul>
+
+<h2 id="rebasing">Rebasing</h2>
+
+<p>Git offers a unique feature called <code>rebasing</code> as an alternative to merging. Its syntax is: </p>
+
+<pre><code>    git rebase [new-commit]  </code></pre>
+
+<p>When run, Git performs the following steps:</p>
+
+<ul>
+<li>Identifies each commit that is an ancestor of the current commit but not of [new-commit]. This can be thought of as a two-step process: first, find the common ancestor of [new-commit] and the current commit; call this the <em>ancestor commit</em>. Second, collect all the commits between the <em>ancestor commit</em> and the current commit.</li>
+<li>Determines what changed for each of those commits, and puts those changes aside.</li>
+<li>Sets the current head to point to [new-commit].</li>
+<li>For each of the changes set aside, replays that change onto the current head and creates a new commit.</li>
+</ul>
+
+<p>The result is that HEAD, the current commit, is a descendant of [new-commit], but it contains all the changes as if it had been merged with [new-commit]. </p>
+
+<p>For example, imagine that a repository looks like: </p>
+
+<pre><code>             +-------------- (D)  
+            /                 |  
+    (A) -- (B) -- (C)         |  
+                   |          |  
+                 master  new-branch  
+                              |  
+                             HEAD  </code></pre>
+
+<p>Performing <code>git rebase master</code> would produce the following: </p>
+
+<pre><code>                     +------ (E)  
+                    /         |  
+    (A) -- (B) -- (C)         |  
+                   |          |  
+                 master  new-branch  
+                              |  
+                             HEAD  </code></pre>
+
+<p>where (E) is a new commit that incorporates the changes between (B) and (D), but reorganized to place those changes on (C). </p>
+
+<p>Rebase has the advantage that there is no merge commit created. However, because HEAD is not a descendant of the pre-rebase HEAD commit, rebasing can be problematic. For one thing, it means that a rebased head cannot be pushed to a remote server, because it does not result in a fast forward merge. Moreover, it results in a loss of information. It is no longer known that (D) was once on the <em>new-branch</em> head. This results in a &#8220;changing of history&#8221; that could confuse someone who already knows about commit (D). </p>
+
+<h2 id="commonrebasingusepractices">Common Rebasing Use Practices</h2>
+
+<p>Because of this danger of rebasing, it is best reserved for two situations. </p>
+
+<p>First, if you are developing a branch on your own and not sharing it with anyone, you could rebase it to keep the branch up to date with respect to the main branch. Then, when you finally merge your developed branch into the main branch, it will be free of merge commits, because it will appear that your development branch was a descendant of the main head. Moreover, the main branch can move forward with a fast forward merge rather than a regular merge commit. </p>
+
+<p>Second, if you commit to a branch but that branch changes at the same time on a remote machine, you can use rebase to shift your own commits, allowing you to push your commits to the remote repository. From the example above: </p>
+
+<pre><code>                                         +-- (D)  
+                                        /     |  
+    (A) -- (B) -- (C)           (A) -- (B)    |  
+                   |                          |  
+                 master                     master  
+  
+    Your repository             Remote repository  </code></pre>
+
+<p>If you perform a <code>fetch</code>, your repository will look like this: </p>
+
+<pre><code>             +-------------- (D)  
+            /                 |  
+    (A) -- (B) -- (C)         |  
+                   |          |  
+                 master origin/master  </code></pre>
+
+<p>Now, assuming <em>master</em> is your current head, you run: </p>
+
+<pre><code>git rebase origin/master    
+</code></pre>
+
+<p>And your repository will look like: </p>
+
+<pre><code>              +------ (D) ------+  
+             /         |         \  
+    (A) -- (B)         |         (E)  
+                       |          |  
+                 origin/master  master  </code></pre>
+
+<p>Commit (E) contains the changes you made between commits (B) and (C), but now commit (E) is a descendant of (D). This allows you to push your head <em>master</em>, as a fast forward merge, to update <em>origin/master</em>. </p>
+
+<h2 id="movingon">Moving On</h2>
+
+<p>There are many more things possible with Git. The <a href="http://git-scm.com/docs">manual pages</a> generally document, in fairly good detail, the possible operations.</p>
+
+<blockquote>
+<p>The entire <a href="http://git-scm.com/book">Pro Git book</a>, written by Scott Chacon and published by Apress, is available on the <a href="http://git-scm.com/docs">Git website</a>. </p>
+</blockquote>
+
+<p>If you understand how the Git repository is a tree of commits and see how operations like branching, merging, pushing, and pulling manipulate that tree, then understanding other Git commands should not be difficult. You should be able to visualize how any command will search or modify the tree and specify the right commits on the tree for Git to operate on. </p>
+
+<p>So, go forth and code! </p>
+
+<hr />
+
+<p>Copyright (C) 2000&#8211;2013 <a href="http://www.sbf5.com/~cduan/">Charles Duan</a>. </p>
+
+<p>My e-mail address is &#8220;website.comments&#8221; (without the quotes) followed by an @<br/>
+symbol, my first initial and last name concatenated, a dot, and &#8220;com.&#8221; </p>
+
+<p>This version converted to markdown, epub, mobi and html by <a href="http://twitter.com/mildlydiverting">Kim Plowright</a> </p>
+
+<script>var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function c(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function j(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function g(t,s){var r="";for(var q=0;q<t.childNodes.length;q++){if(t.childNodes[q].nodeType==3){var p=t.childNodes[q].nodeValue;if(s){p=p.replace(/\n/g,"")}r+=p}else{if(t.childNodes[q].nodeName=="BR"){r+="\n"}else{r+=g(t.childNodes[q])}}}if(/MSIE [678]/.test(navigator.userAgent)){r=r.replace(/\r/g,"\n")}return r}function a(s){var q=s.className.split(/\s+/);q=q.concat(s.parentNode.className.split(/\s+/));for(var p=0;p<q.length;p++){var r=q[p].replace(/^language-/,"");if(d[r]||r=="no-highlight"){return r}}}function b(p){var q=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{q.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);q.push({event:"stop",offset:t,node:s.childNodes[r]})}}}return t})(p,0);return q}function l(y,z,x){var r=0;var w="";var t=[];function u(){if(y.length&&z.length){if(y[0].offset!=z[0].offset){return(y[0].offset<z[0].offset)?y:z}else{return z[0].event=="start"?y:z}}else{return y.length?y:z}}function s(C){var D="<"+C.nodeName.toLowerCase();for(var A=0;A<C.attributes.length;A++){var B=C.attributes[A];D+=" "+B.nodeName.toLowerCase();if(B.nodeValue!=undefined&&B.nodeValue!=false&&B.nodeValue!=null){D+='="'+m(B.nodeValue)+'"'}}return D+">"}while(y.length||z.length){var v=u().splice(0,1)[0];w+=m(x.substr(r,v.offset-r));r=v.offset;if(v.event=="start"){w+=s(v.node);t.push(v.node)}else{if(v.event=="stop"){var q=t.length;do{q--;var p=t[q];w+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);t.splice(q,1);while(q<t.length){w+=s(t[q]);q++}}}}w+=x.substr(r);return w}function i(){function p(u,t,v){if(u.compiled){return}if(!v){u.bR=c(t,u.b?u.b:"\\B|\\b");if(!u.e&&!u.eW){u.e="\\B|\\b"}if(u.e){u.eR=c(t,u.e)}}if(u.i){u.iR=c(t,u.i)}if(u.r==undefined){u.r=1}if(u.k){u.lR=c(t,u.l||hljs.IR,true)}for(var s in u.k){if(!u.k.hasOwnProperty(s)){continue}if(u.k[s] instanceof Object){u.kG=u.k}else{u.kG={keyword:u.k}}break}if(!u.c){u.c=[]}u.compiled=true;for(var r=0;r<u.c.length;r++){p(u.c[r],t,false)}if(u.starts){p(u.starts,t,false)}}for(var q in d){if(!d.hasOwnProperty(q)){continue}p(d[q].dM,d[q],true)}}function e(J,D){if(!i.called){i();i.called=true}function z(r,M){for(var L=0;L<M.c.length;L++){if(M.c[L].bR.test(r)){return M.c[L]}}}function w(L,r){if(C[L].e&&C[L].eR.test(r)){return 1}if(C[L].eW){var M=w(L-1,r);return M?M+1:0}return 0}function x(r,L){return L.iR&&L.iR.test(r)}function A(O,N){var M=[];for(var L=0;L<O.c.length;L++){M.push(O.c[L].b)}var r=C.length-1;do{if(C[r].e){M.push(C[r].e)}r--}while(C[r+1].eW);if(O.i){M.push(O.i)}return c(N,"("+M.join("|")+")",true)}function s(M,L){var N=C[C.length-1];if(!N.t){N.t=A(N,H)}N.t.lastIndex=L;var r=N.t.exec(M);if(r){return[M.substr(L,r.index-L),r[0],false]}else{return[M.substr(L),"",true]}}function p(O,r){var L=H.cI?r[0].toLowerCase():r[0];for(var N in O.kG){if(!O.kG.hasOwnProperty(N)){continue}var M=O.kG[N].hasOwnProperty(L);if(M){return[N,M]}}return false}function F(M,O){if(!O.k){return m(M)}var N="";var P=0;O.lR.lastIndex=0;var L=O.lR.exec(M);while(L){N+=m(M.substr(P,L.index-P));var r=p(O,L);if(r){t+=r[1];N+='<span class="'+r[0]+'">'+m(L[0])+"</span>"}else{N+=m(L[0])}P=O.lR.lastIndex;L=O.lR.exec(M)}N+=m(M.substr(P,M.length-P));return N}function K(r,M){if(M.sL&&d[M.sL]){var L=e(M.sL,r);t+=L.keyword_count;return L.value}else{return F(r,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){q+=L;M.buffer=""}else{if(M.eB){q+=m(r)+L;M.buffer=""}else{q+=L;M.buffer=r}}C.push(M);B+=M.r}function E(O,L,Q){var R=C[C.length-1];if(Q){q+=K(R.buffer+O,R);return false}var M=z(L,R);if(M){q+=K(R.buffer+O,R);I(M,L);return M.rB}var r=w(C.length-1,L);if(r){var N=R.cN?"</span>":"";if(R.rE){q+=K(R.buffer+O,R)+N}else{if(R.eE){q+=K(R.buffer+O,R)+N+m(L)}else{q+=K(R.buffer+O+L,R)+N}}while(r>1){N=C[C.length-2].cN?"</span>":"";q+=N;r--;C.length--}var P=C[C.length-1];C.length--;C[C.length-1].buffer="";if(P.starts){I(P.starts,"")}return R.rE}if(x(L,R)){throw"Illegal"}}var H=d[J];var C=[H.dM];var B=0;var t=0;var q="";try{var v=0;H.dM.buffer="";do{var y=s(D,v);var u=E(y[0],y[1],y[2]);v+=y[0].length;if(!u){v+=y[1].length}}while(!y[2]);if(C.length>1){throw"Illegal"}return{r:B,keyword_count:t,value:q}}catch(G){if(G=="Illegal"){return{r:0,keyword_count:0,value:m(D)}}else{throw G}}}function f(t){var r={keyword_count:0,r:0,value:m(t)};var q=r;for(var p in d){if(!d.hasOwnProperty(p)){continue}var s=e(p,t);s.language=p;if(s.keyword_count+s.r>q.keyword_count+q.r){q=s}if(s.keyword_count+s.r>r.keyword_count+r.r){q=r;r=s}}if(q.language){r.second_best=q}return r}function h(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function o(u,x,q){var y=g(u,q);var s=a(u);if(s=="no-highlight"){return}if(s){var w=e(s,y)}else{var w=f(y);s=w.language}var p=b(u);if(p.length){var r=document.createElement("pre");r.innerHTML=w.value;w.value=l(p,b(r),y)}w.value=h(w.value,x,q);var t=u.className;if(!t.match("(\\s|^)(language-)?"+s+"(\\s|$)")){t=t?(t+" "+s):s}if(/MSIE [678]/.test(navigator.userAgent)&&u.tagName=="CODE"&&u.parentNode.tagName=="PRE"){var r=u.parentNode;var v=document.createElement("div");v.innerHTML="<pre><code>"+w.value+"</code></pre>";u=v.firstChild.firstChild;v.firstChild.cN=r.cN;r.parentNode.replaceChild(v.firstChild,r)}else{u.innerHTML=w.value}u.className=t;u.result={language:s,kw:w.keyword_count,re:w.r};if(w.second_best){u.second_best={language:w.second_best.language,kw:w.second_best.keyword_count,re:w.second_best.r}}}function k(){if(k.called){return}k.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=j(r[p]);if(q){o(q,hljs.tabReplace)}}}function n(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",k,false);window.addEventListener("load",k,false)}else{if(window.attachEvent){window.attachEvent("onload",k)}else{window.onload=k}}}var d={};this.LANGUAGES=d;this.highlight=e;this.highlightAuto=f;this.fixMarkup=h;this.highlightBlock=o;this.initHighlighting=k;this.initHighlightingOnLoad=n;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0x[A-Za-z0-9]+|\\d+(\\.\\d+)?)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.inherit=function(p,s){var r={};for(var q in p){r[q]=p[q]}if(s){for(var q in s){r[q]=s[q]}}return r}}();hljs.LANGUAGES.bash=function(){var d={"true":1,"false":1};var b={cN:"variable",b:"\\$([a-zA-Z0-9_]+)\\b"};var a={cN:"variable",b:"\\$\\{(([^}])|(\\\\}))+\\}",c:[hljs.CNM]};var c={cN:"string",b:'"',e:'"',i:"\\n",c:[hljs.BE,b,a],r:0};var e={cN:"test_condition",b:"",e:"",c:[c,b,a,hljs.CNM],k:{literal:d},r:0};return{dM:{k:{keyword:{"if":1,then:1,"else":1,fi:1,"for":1,"break":1,"continue":1,"while":1,"in":1,"do":1,done:1,echo:1,exit:1,"return":1,set:1,declare:1},literal:d},c:[{cN:"shebang",b:"(#!\\/bin\\/bash)|(#!\\/bin\\/sh)",r:10},hljs.HCM,hljs.CNM,c,b,a,hljs.inherit(e,{b:"\\[ ",e:" \\]",r:0}),hljs.inherit(e,{b:"\\[\\[ ",e:" \\]\\]"})]}}}();hljs.LANGUAGES.cs={dM:{k:{"abstract":1,as:1,base:1,bool:1,"break":1,"byte":1,"case":1,"catch":1,"char":1,checked:1,"class":1,"const":1,"continue":1,decimal:1,"default":1,delegate:1,"do":1,"do":1,"double":1,"else":1,"enum":1,event:1,explicit:1,extern:1,"false":1,"finally":1,fixed:1,"float":1,"for":1,foreach:1,"goto":1,"if":1,implicit:1,"in":1,"int":1,"interface":1,internal:1,is:1,lock:1,"long":1,namespace:1,"new":1,"null":1,object:1,operator:1,out:1,override:1,params:1,"private":1,"protected":1,"public":1,readonly:1,ref:1,"return":1,sbyte:1,sealed:1,"short":1,sizeof:1,stackalloc:1,"static":1,string:1,struct:1,"switch":1,"this":1,"throw":1,"true":1,"try":1,"typeof":1,uint:1,ulong:1,unchecked:1,unsafe:1,ushort:1,using:1,virtual:1,"volatile":1,"void":1,"while":1,ascending:1,descending:1,from:1,get:1,group:1,into:1,join:1,let:1,orderby:1,partial:1,select:1,set:1,value:1,"var":1,where:1,yield:1},c:[{cN:"comment",b:"///",e:"$",rB:true,c:[{cN:"xmlDocTag",b:"///|<!--|-->"},{cN:"xmlDocTag",b:"</?",e:">"}]},hljs.CLCM,hljs.CBLCLM,{cN:"string",b:'@"',e:'"',c:[{b:'""'}]},hljs.ASM,hljs.QSM,hljs.CNM]}};hljs.LANGUAGES.ruby=function(){var g="[a-zA-Z_][a-zA-Z0-9_]*(\\!|\\?)?";var a="[a-zA-Z_]\\w*[!?=]?|[-+~]\\@|<<|>>|=~|===?|<=>|[<>]=?|\\*\\*|[-/+%^&*~`|]|\\[\\]=?";var n={keyword:{and:1,"false":1,then:1,defined:1,module:1,"in":1,"return":1,redo:1,"if":1,BEGIN:1,retry:1,end:1,"for":1,"true":1,self:1,when:1,next:1,until:1,"do":1,begin:1,unless:1,END:1,rescue:1,nil:1,"else":1,"break":1,undef:1,not:1,"super":1,"class":1,"case":1,require:1,yield:1,alias:1,"while":1,ensure:1,elsif:1,or:1,def:1},keymethods:{__id__:1,__send__:1,abort:1,abs:1,"all?":1,allocate:1,ancestors:1,"any?":1,arity:1,assoc:1,at:1,at_exit:1,autoload:1,"autoload?":1,"between?":1,binding:1,binmode:1,"block_given?":1,call:1,callcc:1,caller:1,capitalize:1,"capitalize!":1,casecmp:1,"catch":1,ceil:1,center:1,chomp:1,"chomp!":1,chop:1,"chop!":1,chr:1,"class":1,class_eval:1,"class_variable_defined?":1,class_variables:1,clear:1,clone:1,close:1,close_read:1,close_write:1,"closed?":1,coerce:1,collect:1,"collect!":1,compact:1,"compact!":1,concat:1,"const_defined?":1,const_get:1,const_missing:1,const_set:1,constants:1,count:1,crypt:1,"default":1,default_proc:1,"delete":1,"delete!":1,delete_at:1,delete_if:1,detect:1,display:1,div:1,divmod:1,downcase:1,"downcase!":1,downto:1,dump:1,dup:1,each:1,each_byte:1,each_index:1,each_key:1,each_line:1,each_pair:1,each_value:1,each_with_index:1,"empty?":1,entries:1,eof:1,"eof?":1,"eql?":1,"equal?":1,"eval":1,exec:1,exit:1,"exit!":1,extend:1,fail:1,fcntl:1,fetch:1,fileno:1,fill:1,find:1,find_all:1,first:1,flatten:1,"flatten!":1,floor:1,flush:1,for_fd:1,foreach:1,fork:1,format:1,freeze:1,"frozen?":1,fsync:1,getc:1,gets:1,global_variables:1,grep:1,gsub:1,"gsub!":1,"has_key?":1,"has_value?":1,hash:1,hex:1,id:1,include:1,"include?":1,included_modules:1,index:1,indexes:1,indices:1,induced_from:1,inject:1,insert:1,inspect:1,instance_eval:1,instance_method:1,instance_methods:1,"instance_of?":1,"instance_variable_defined?":1,instance_variable_get:1,instance_variable_set:1,instance_variables:1,"integer?":1,intern:1,invert:1,ioctl:1,"is_a?":1,isatty:1,"iterator?":1,join:1,"key?":1,keys:1,"kind_of?":1,lambda:1,last:1,length:1,lineno:1,ljust:1,load:1,local_variables:1,loop:1,lstrip:1,"lstrip!":1,map:1,"map!":1,match:1,max:1,"member?":1,merge:1,"merge!":1,method:1,"method_defined?":1,method_missing:1,methods:1,min:1,module_eval:1,modulo:1,name:1,nesting:1,"new":1,next:1,"next!":1,"nil?":1,nitems:1,"nonzero?":1,object_id:1,oct:1,open:1,pack:1,partition:1,pid:1,pipe:1,pop:1,popen:1,pos:1,prec:1,prec_f:1,prec_i:1,print:1,printf:1,private_class_method:1,private_instance_methods:1,"private_method_defined?":1,private_methods:1,proc:1,protected_instance_methods:1,"protected_method_defined?":1,protected_methods:1,public_class_method:1,public_instance_methods:1,"public_method_defined?":1,public_methods:1,push:1,putc:1,puts:1,quo:1,raise:1,rand:1,rassoc:1,read:1,read_nonblock:1,readchar:1,readline:1,readlines:1,readpartial:1,rehash:1,reject:1,"reject!":1,remainder:1,reopen:1,replace:1,require:1,"respond_to?":1,reverse:1,"reverse!":1,reverse_each:1,rewind:1,rindex:1,rjust:1,round:1,rstrip:1,"rstrip!":1,scan:1,seek:1,select:1,send:1,set_trace_func:1,shift:1,singleton_method_added:1,singleton_methods:1,size:1,sleep:1,slice:1,"slice!":1,sort:1,"sort!":1,sort_by:1,split:1,sprintf:1,squeeze:1,"squeeze!":1,srand:1,stat:1,step:1,store:1,strip:1,"strip!":1,sub:1,"sub!":1,succ:1,"succ!":1,sum:1,superclass:1,swapcase:1,"swapcase!":1,sync:1,syscall:1,sysopen:1,sysread:1,sysseek:1,system:1,syswrite:1,taint:1,"tainted?":1,tell:1,test:1,"throw":1,times:1,to_a:1,to_ary:1,to_f:1,to_hash:1,to_i:1,to_int:1,to_io:1,to_proc:1,to_s:1,to_str:1,to_sym:1,tr:1,"tr!":1,tr_s:1,"tr_s!":1,trace_var:1,transpose:1,trap:1,truncate:1,"tty?":1,type:1,ungetc:1,uniq:1,"uniq!":1,unpack:1,unshift:1,untaint:1,untrace_var:1,upcase:1,"upcase!":1,update:1,upto:1,"value?":1,values:1,values_at:1,warn:1,write:1,write_nonblock:1,"zero?":1,zip:1}};var h={cN:"yardoctag",b:"@[A-Za-z]+"};var d={cN:"comment",b:"#",e:"$",c:[h]};var c={cN:"comment",b:"^\\=begin",e:"^\\=end",c:[h],r:10};var b={cN:"comment",b:"^__END__",e:"\\n$"};var u={cN:"subst",b:"#\\{",e:"}",l:g,k:n};var p=[hljs.BE,u];var s={cN:"string",b:"'",e:"'",c:p,r:0};var r={cN:"string",b:'"',e:'"',c:p,r:0};var q={cN:"string",b:"%[qw]?\\(",e:"\\)",c:p,r:10};var o={cN:"string",b:"%[qw]?\\[",e:"\\]",c:p,r:10};var m={cN:"string",b:"%[qw]?{",e:"}",c:p,r:10};var l={cN:"string",b:"%[qw]?<",e:">",c:p,r:10};var k={cN:"string",b:"%[qw]?/",e:"/",c:p,r:10};var j={cN:"string",b:"%[qw]?%",e:"%",c:p,r:10};var i={cN:"string",b:"%[qw]?-",e:"-",c:p,r:10};var t={cN:"string",b:"%[qw]?\\|",e:"\\|",c:p,r:10};var e={cN:"function",b:"\\bdef\\s+",e:" |$|;",l:g,k:n,c:[{cN:"title",b:a,l:g,k:n},{cN:"params",b:"\\(",e:"\\)",l:g,k:n},d,c,b]};var f={cN:"identifier",b:g,l:g,k:n,r:0};var v=[d,c,b,s,r,q,o,m,l,k,j,i,t,{cN:"class",b:"\\b(class|module)\\b",e:"$|;",k:{"class":1,module:1},c:[{cN:"title",b:"[A-Za-z_]\\w*(::\\w+)*(\\?|\\!)?",r:0},{cN:"inheritance",b:"<\\s*",c:[{cN:"parent",b:"("+hljs.IR+"::)?"+hljs.IR}]},d,c,b]},e,{cN:"constant",b:"(::)?([A-Z]\\w*(::)?)+",r:0},{cN:"symbol",b:":",c:[s,r,q,o,m,l,k,j,i,t,f],r:0},{cN:"number",b:"(\\b0[0-7_]+)|(\\b0x[0-9a-fA-F_]+)|(\\b[1-9][0-9_]*(\\.[0-9_]+)?)|[0_]\\b",r:0},{cN:"number",b:"\\?\\w"},{cN:"variable",b:"(\\$\\W)|((\\$|\\@\\@?)(\\w+))"},f,{b:"("+hljs.RSR+")\\s*",c:[d,c,b,{cN:"regexp",b:"/",e:"/[a-z]*",i:"\\n",c:[hljs.BE]}],r:0}];u.c=v;e.c[1].c=v;return{dM:{l:g,k:n,c:v}}}();hljs.LANGUAGES.diff={cI:true,dM:{c:[{cN:"chunk",b:"^\\@\\@ +\\-\\d+,\\d+ +\\+\\d+,\\d+ +\\@\\@$",r:10},{cN:"chunk",b:"^\\*\\*\\* +\\d+,\\d+ +\\*\\*\\*\\*$",r:10},{cN:"chunk",b:"^\\-\\-\\- +\\d+,\\d+ +\\-\\-\\-\\-$",r:10},{cN:"header",b:"Index: ",e:"$"},{cN:"header",b:"=====",e:"=====$"},{cN:"header",b:"^\\-\\-\\-",e:"$"},{cN:"header",b:"^\\*{3} ",e:"$"},{cN:"header",b:"^\\+\\+\\+",e:"$"},{cN:"header",b:"\\*{5}",e:"\\*{5}$"},{cN:"addition",b:"^\\+",e:"$"},{cN:"deletion",b:"^\\-",e:"$"},{cN:"change",b:"^\\!",e:"$"}]}};hljs.LANGUAGES.javascript={dM:{k:{keyword:{"in":1,"if":1,"for":1,"while":1,"finally":1,"var":1,"new":1,"function":1,"do":1,"return":1,"void":1,"else":1,"break":1,"catch":1,"instanceof":1,"with":1,"throw":1,"case":1,"default":1,"try":1,"this":1,"switch":1,"continue":1,"typeof":1,"delete":1},literal:{"true":1,"false":1,"null":1}},c:[hljs.ASM,hljs.QSM,hljs.CLCM,hljs.CBLCLM,hljs.CNM,{b:"("+hljs.RSR+"|case|return|throw)\\s*",k:{"return":1,"throw":1,"case":1},c:[hljs.CLCM,hljs.CBLCLM,{cN:"regexp",b:"/",e:"/[gim]*",c:[{b:"\\\\/"}]}],r:0},{cN:"function",b:"\\bfunction\\b",e:"{",k:{"function":1},c:[{cN:"title",b:"[A-Za-z$_][0-9A-Za-z$_]*"},{cN:"params",b:"\\(",e:"\\)",c:[hljs.ASM,hljs.QSM,hljs.CLCM,hljs.CBLCLM]}]}]}};hljs.LANGUAGES.css=function(){var a={cN:"function",b:hljs.IR+"\\(",e:"\\)",c:[{eW:true,eE:true,c:[hljs.NM,hljs.ASM,hljs.QSM]}]};return{cI:true,dM:{i:"[=/|']",c:[hljs.CBLCLM,{cN:"id",b:"\\#[A-Za-z0-9_-]+"},{cN:"class",b:"\\.[A-Za-z0-9_-]+",r:0},{cN:"attr_selector",b:"\\[",e:"\\]",i:"$"},{cN:"pseudo",b:":(:)?[a-zA-Z0-9\\_\\-\\+\\(\\)\\\"\\']+"},{cN:"at_rule",b:"@(font-face|page)",l:"[a-z-]+",k:{"font-face":1,page:1}},{cN:"at_rule",b:"@",e:"[{;]",eE:true,k:{"import":1,page:1,media:1,charset:1},c:[a,hljs.ASM,hljs.QSM,hljs.NM]},{cN:"tag",b:hljs.IR,r:0},{cN:"rules",b:"{",e:"}",i:"[^\\s]",r:0,c:[hljs.CBLCLM,{cN:"rule",b:"[^\\s]",rB:true,e:";",eW:true,c:[{cN:"attribute",b:"[A-Z\\_\\.\\-]+",e:":",eE:true,i:"[^\\s]",starts:{cN:"value",eW:true,eE:true,c:[a,hljs.NM,hljs.QSM,hljs.ASM,hljs.CBLCLM,{cN:"hexcolor",b:"\\#[0-9A-F]+"},{cN:"important",b:"!important"}]}}]}]}]}}}();hljs.LANGUAGES.xml=function(){var b="[A-Za-z0-9\\._:-]+";var a={eW:true,c:[{cN:"attribute",b:b,r:0},{b:'="',rB:true,e:'"',c:[{cN:"value",b:'"',eW:true}]},{b:"='",rB:true,e:"'",c:[{cN:"value",b:"'",eW:true}]},{b:"=",c:[{cN:"value",b:"[^\\s/>]+"}]}]};return{cI:true,dM:{c:[{cN:"pi",b:"<\\?",e:"\\?>",r:10},{cN:"doctype",b:"<!DOCTYPE",e:">",r:10,c:[{b:"\\[",e:"\\]"}]},{cN:"comment",b:"<!--",e:"-->",r:10},{cN:"cdata",b:"<\\!\\[CDATA\\[",e:"\\]\\]>",r:10},{cN:"tag",b:"<style",e:">",k:{title:{style:1}},c:[a],starts:{cN:"css",e:"</style>",rE:true,sL:"css"}},{cN:"tag",b:"<script",e:">",k:{title:{script:1}},c:[a],starts:{cN:"javascript",e:"<\/script>",rE:true,sL:"javascript"}},{cN:"vbscript",b:"<%",e:"%>",sL:"vbscript"},{cN:"tag",b:"</?",e:"/?>",c:[{cN:"title",b:"[^ />]+"},a]}]}}}();hljs.LANGUAGES.java={dM:{k:{"false":1,"synchronized":1,"int":1,"abstract":1,"float":1,"private":1,"char":1,"interface":1,"boolean":1,"static":1,"null":1,"if":1,"const":1,"for":1,"true":1,"while":1,"long":1,"throw":1,strictfp:1,"finally":1,"protected":1,"extends":1,"import":1,"native":1,"final":1,"implements":1,"return":1,"void":1,"enum":1,"else":1,"break":1,"transient":1,"new":1,"catch":1,"instanceof":1,"byte":1,"super":1,"class":1,"volatile":1,"case":1,assert:1,"short":1,"package":1,"default":1,"double":1,"public":1,"try":1,"this":1,"switch":1,"continue":1,"throws":1},c:[{cN:"javadoc",b:"/\\*\\*",e:"\\*/",c:[{cN:"javadoctag",b:"@[A-Za-z]+"}],r:10},hljs.CLCM,hljs.CBLCLM,hljs.ASM,hljs.QSM,{cN:"class",b:"(class |interface )",e:"{",k:{"class":1,"interface":1},i:":",c:[{b:"(implements|extends)",k:{"extends":1,"implements":1},r:10},{cN:"title",b:hljs.UIR}]},hljs.CNM,{cN:"annotation",b:"@[A-Za-z]+"}]}};hljs.LANGUAGES.php={cI:true,dM:{k:{and:1,include_once:1,list:1,"abstract":1,global:1,"private":1,echo:1,"interface":1,as:1,"static":1,endswitch:1,array:1,"null":1,"if":1,endwhile:1,or:1,"const":1,"for":1,endforeach:1,self:1,"var":1,"while":1,isset:1,"public":1,"protected":1,exit:1,foreach:1,"throw":1,elseif:1,"extends":1,include:1,__FILE__:1,empty:1,require_once:1,"function":1,"do":1,xor:1,"return":1,"implements":1,parent:1,clone:1,use:1,__CLASS__:1,__LINE__:1,"else":1,"break":1,print:1,"eval":1,"new":1,"catch":1,__METHOD__:1,"class":1,"case":1,exception:1,php_user_filter:1,"default":1,die:1,require:1,__FUNCTION__:1,enddeclare:1,"final":1,"try":1,"this":1,"switch":1,"continue":1,endfor:1,endif:1,declare:1,unset:1,"true":1,"false":1,namespace:1},c:[hljs.CLCM,hljs.HCM,{cN:"comment",b:"/\\*",e:"\\*/",c:[{cN:"phpdoc",b:"\\s@[A-Za-z]+",r:10}]},hljs.CNM,hljs.inherit(hljs.ASM,{i:null}),hljs.inherit(hljs.QSM,{i:null}),{cN:"variable",b:"\\$[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*"},{cN:"preprocessor",b:"<\\?php",r:10},{cN:"preprocessor",b:"\\?>"}]}};hljs.LANGUAGES.python=function(){var c={cN:"string",b:"(u|b)?r?'''",e:"'''",r:10};var b={cN:"string",b:'(u|b)?r?"""',e:'"""',r:10};var a={cN:"string",b:"(u|r|ur|b|br)'",e:"'",c:[hljs.BE],r:10};var f={cN:"string",b:'(u|r|ur|b|br)"',e:'"',c:[hljs.BE],r:10};var d={cN:"title",b:hljs.UIR};var e={cN:"params",b:"\\(",e:"\\)",c:[c,b,a,f,hljs.ASM,hljs.QSM]};return{dM:{k:{keyword:{and:1,elif:1,is:1,global:1,as:1,"in":1,"if":1,from:1,raise:1,"for":1,except:1,"finally":1,print:1,"import":1,pass:1,"return":1,exec:1,"else":1,"break":1,not:1,"with":1,"class":1,assert:1,yield:1,"try":1,"while":1,"continue":1,del:1,or:1,def:1,lambda:1,nonlocal:10},built_in:{None:1,True:1,False:1,Ellipsis:1,NotImplemented:1}},i:"(</|->|\\?)",c:[hljs.HCM,c,b,a,f,hljs.ASM,hljs.QSM,{cN:"function",b:"\\bdef ",e:":",i:"$",k:{def:1},c:[d,e],r:10},{cN:"class",b:"\\bclass ",e:":",i:"[${]",k:{"class":1},c:[d,e],r:10},hljs.CNM,{cN:"decorator",b:"@",e:"$"}]}}}();hljs.LANGUAGES.sql={cI:true,dM:{i:"[^\\s]",c:[{cN:"operator",b:"(begin|start|commit|rollback|savepoint|lock|alter|create|drop|rename|call|delete|do|handler|insert|load|replace|select|truncate|update|set|show|pragma)\\b",e:";|$",k:{keyword:{all:1,partial:1,global:1,month:1,current_timestamp:1,using:1,go:1,revoke:1,smallint:1,indicator:1,"end-exec":1,disconnect:1,zone:1,"with":1,character:1,assertion:1,to:1,add:1,current_user:1,usage:1,input:1,local:1,alter:1,match:1,collate:1,real:1,then:1,rollback:1,get:1,read:1,timestamp:1,session_user:1,not:1,integer:1,bit:1,unique:1,day:1,minute:1,desc:1,insert:1,execute:1,like:1,ilike:2,level:1,decimal:1,drop:1,"continue":1,isolation:1,found:1,where:1,constraints:1,domain:1,right:1,national:1,some:1,module:1,transaction:1,relative:1,second:1,connect:1,escape:1,close:1,system_user:1,"for":1,deferred:1,section:1,cast:1,current:1,sqlstate:1,allocate:1,intersect:1,deallocate:1,numeric:1,"public":1,preserve:1,full:1,"goto":1,initially:1,asc:1,no:1,key:1,output:1,collation:1,group:1,by:1,union:1,session:1,both:1,last:1,language:1,constraint:1,column:1,of:1,space:1,foreign:1,deferrable:1,prior:1,connection:1,unknown:1,action:1,commit:1,view:1,or:1,first:1,into:1,"float":1,year:1,primary:1,cascaded:1,except:1,restrict:1,set:1,references:1,names:1,table:1,outer:1,open:1,select:1,size:1,are:1,rows:1,from:1,prepare:1,distinct:1,leading:1,create:1,only:1,next:1,inner:1,authorization:1,schema:1,corresponding:1,option:1,declare:1,precision:1,immediate:1,"else":1,timezone_minute:1,external:1,varying:1,translation:1,"true":1,"case":1,exception:1,join:1,hour:1,"default":1,"double":1,scroll:1,value:1,cursor:1,descriptor:1,values:1,dec:1,fetch:1,procedure:1,"delete":1,and:1,"false":1,"int":1,is:1,describe:1,"char":1,as:1,at:1,"in":1,varchar:1,"null":1,trailing:1,any:1,absolute:1,current_time:1,end:1,grant:1,privileges:1,when:1,cross:1,check:1,write:1,current_date:1,pad:1,begin:1,temporary:1,exec:1,time:1,update:1,catalog:1,user:1,sql:1,date:1,on:1,identity:1,timezone_hour:1,natural:1,whenever:1,interval:1,work:1,order:1,cascade:1,diagnostics:1,nchar:1,having:1,left:1,call:1,"do":1,handler:1,load:1,replace:1,truncate:1,start:1,lock:1,show:1,pragma:1},aggregate:{count:1,sum:1,min:1,max:1,avg:1}},c:[{cN:"string",b:"'",e:"'",c:[hljs.BE,{b:"''"}],r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE,{b:'""'}],r:0},{cN:"string",b:"`",e:"`",c:[hljs.BE]},hljs.CNM,{b:"\\n"}]},hljs.CBLCLM,{cN:"comment",b:"--",e:"$"}]}};hljs.LANGUAGES.ini={cI:true,dM:{i:"[^\\s]",c:[{cN:"comment",b:";",e:"$"},{cN:"title",b:"^\\[",e:"\\]"},{cN:"setting",b:"^[a-z0-9_\\[\\]]+[ \\t]*=[ \\t]*",e:"$",c:[{cN:"value",eW:true,k:{on:1,off:1,"true":1,"false":1,yes:1,no:1},c:[hljs.QSM,hljs.NM]}]}]}};hljs.LANGUAGES.perl=function(){var c={getpwent:1,getservent:1,quotemeta:1,msgrcv:1,scalar:1,kill:1,dbmclose:1,undef:1,lc:1,ma:1,syswrite:1,tr:1,send:1,umask:1,sysopen:1,shmwrite:1,vec:1,qx:1,utime:1,local:1,oct:1,semctl:1,localtime:1,readpipe:1,"do":1,"return":1,format:1,read:1,sprintf:1,dbmopen:1,pop:1,getpgrp:1,not:1,getpwnam:1,rewinddir:1,qq:1,fileno:1,qw:1,endprotoent:1,wait:1,sethostent:1,bless:1,s:1,opendir:1,"continue":1,each:1,sleep:1,endgrent:1,shutdown:1,dump:1,chomp:1,connect:1,getsockname:1,die:1,socketpair:1,close:1,flock:1,exists:1,index:1,shmget:1,sub:1,"for":1,endpwent:1,redo:1,lstat:1,msgctl:1,setpgrp:1,abs:1,exit:1,select:1,print:1,ref:1,gethostbyaddr:1,unshift:1,fcntl:1,syscall:1,"goto":1,getnetbyaddr:1,join:1,gmtime:1,symlink:1,semget:1,splice:1,x:1,getpeername:1,recv:1,log:1,setsockopt:1,cos:1,last:1,reverse:1,gethostbyname:1,getgrnam:1,study:1,formline:1,endhostent:1,times:1,chop:1,length:1,gethostent:1,getnetent:1,pack:1,getprotoent:1,getservbyname:1,rand:1,mkdir:1,pos:1,chmod:1,y:1,substr:1,endnetent:1,printf:1,next:1,open:1,msgsnd:1,readdir:1,use:1,unlink:1,getsockopt:1,getpriority:1,rindex:1,wantarray:1,hex:1,system:1,getservbyport:1,endservent:1,"int":1,chr:1,untie:1,rmdir:1,prototype:1,tell:1,listen:1,fork:1,shmread:1,ucfirst:1,setprotoent:1,"else":1,sysseek:1,link:1,getgrgid:1,shmctl:1,waitpid:1,unpack:1,getnetbyname:1,reset:1,chdir:1,grep:1,split:1,require:1,caller:1,lcfirst:1,until:1,warn:1,"while":1,values:1,shift:1,telldir:1,getpwuid:1,my:1,getprotobynumber:1,"delete":1,and:1,sort:1,uc:1,defined:1,srand:1,accept:1,"package":1,seekdir:1,getprotobyname:1,semop:1,our:1,rename:1,seek:1,"if":1,q:1,chroot:1,sysread:1,setpwent:1,no:1,crypt:1,getc:1,chown:1,sqrt:1,write:1,setnetent:1,setpriority:1,foreach:1,tie:1,sin:1,msgget:1,map:1,stat:1,getlogin:1,unless:1,elsif:1,truncate:1,exec:1,keys:1,glob:1,tied:1,closedir:1,ioctl:1,socket:1,readlink:1,"eval":1,xor:1,readline:1,binmode:1,setservent:1,eof:1,ord:1,bind:1,alarm:1,pipe:1,atan2:1,getgrent:1,exp:1,time:1,push:1,setgrent:1,gt:1,lt:1,or:1,ne:1,m:1};var d={cN:"subst",b:"[$@]\\{",e:"}",k:c,r:10};var b={cN:"variable",b:"\\$\\d"};var a={cN:"variable",b:"[\\$\\%\\@\\*](\\^\\w\\b|#\\w+(\\:\\:\\w+)*|[^\\s\\w{]|{\\w+}|\\w+(\\:\\:\\w*)*)"};var g=[hljs.BE,d,b,a];var f={b:"->",c:[{b:hljs.IR},{b:"{",e:"}"}]};var e=[b,a,hljs.HCM,{cN:"comment",b:"^(__END__|__DATA__)",e:"\\n$",r:5},f,{cN:"string",b:"q[qwxr]?\\s*\\(",e:"\\)",c:g,r:5},{cN:"string",b:"q[qwxr]?\\s*\\[",e:"\\]",c:g,r:5},{cN:"string",b:"q[qwxr]?\\s*\\{",e:"\\}",c:g,r:5},{cN:"string",b:"q[qwxr]?\\s*\\|",e:"\\|",c:g,r:5},{cN:"string",b:"q[qwxr]?\\s*\\<",e:"\\>",c:g,r:5},{cN:"string",b:"qw\\s+q",e:"q",c:g,r:5},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"string",b:'"',e:'"',c:g,r:0},{cN:"string",b:"`",e:"`",c:[hljs.BE]},{cN:"string",b:"{\\w+}",r:0},{cN:"string",b:"-?\\w+\\s*\\=\\>",r:0},{cN:"number",b:"(\\b0[0-7_]+)|(\\b0x[0-9a-fA-F_]+)|(\\b[1-9][0-9_]*(\\.[0-9_]+)?)|[0_]\\b",r:0},{cN:"regexp",b:"(s|tr|y)/(\\\\.|[^/])*/(\\\\.|[^/])*/[a-z]*",r:10},{cN:"regexp",b:"(m|qr)?/",e:"/[a-z]*",c:[hljs.BE],r:0},{cN:"sub",b:"\\bsub\\b",e:"(\\s*\\(.*?\\))?[;{]",k:{sub:1},r:5},{cN:"operator",b:"-\\w\\b",r:0},{cN:"pod",b:"\\=\\w",e:"\\=cut"}];d.c=e;f.c[1].c=e;return{dM:{k:c,c:e}}}();hljs.LANGUAGES.cpp=function(){var b={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};var a={cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:b,r:10};a.c=[a];return{dM:{k:b,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'",e:"[^\\\\]'",i:"[^\\\\][^']"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},a]}}}();</script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+    </div>
+</body>
+</html>
